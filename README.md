@@ -9,7 +9,7 @@ Click here to See [Grid View](/docs/images/grid_view.png), [List View](/docs/ima
 
 ** Grid View and List View
 
-<img src="https://github.com/azizurice/ComicBooks/blob/master/docs/images/grid_view.png" width="350px" height="800px />
+<img src="https://github.com/azizurice/ComicBooks/blob/master/docs/images/grid_view.png" width="400px" height="760px />
 
 
 
