@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import ca.aequilibrium.comicbooks.BaseActivity;
+import ca.aequilibrium.comicbooks.CharacterDetailActivity;
 import ca.aequilibrium.comicbooks.R;
 import ca.aequilibrium.comicbooks.adapter.ImageCaptionAdapter;
 
@@ -23,7 +24,7 @@ public class GridFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         RelativeLayout layout = (RelativeLayout)inflater.inflate(R.layout.fragment_grid_recycler, container, false);
-        RecyclerView characterRecycler = (RecyclerView)layout.findViewById(R.id.character_recycler);
+        RecyclerView characterRecycler = (RecyclerView)layout.findViewById(R.id.character_grid_recycler);
 
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
         characterRecycler.setLayoutManager(layoutManager);
@@ -32,7 +33,9 @@ public class GridFragment extends Fragment {
         characterRecycler.setAdapter(adapter);
         adapter.setListener(new ImageCaptionAdapter.Listener() {
             public void onClick(int position) {
-                // call here detail activity
+                Intent intent = new Intent(getActivity(), CharacterDetailActivity.class);
+                intent.putExtra(CharacterDetailActivity.EXTRA_CHARACTER_NO, position);
+                getActivity().startActivity(intent);
             }
         });
         return layout;

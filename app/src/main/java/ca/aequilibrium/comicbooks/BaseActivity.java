@@ -2,7 +2,6 @@ package ca.aequilibrium.comicbooks;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
@@ -14,7 +13,7 @@ import ca.aequilibrium.comicbooks.model.ComicCharacter;
 
 public class BaseActivity extends Activity {
     private ProgressDialog mProgressDialog;
-    public static String MARVEL_URL = "http://gateway.marvel.com/v1/public/comics?ts=17&apikey=3b4c677c969802964ca49b1283749e53&hash=e25ef0935e9c7a8b6915a7d920001e69&limit=50";
+    public static String MARVEL_URL ="http://gateway.marvel.com/v1/public/comics?ts=17&apikey=c30573ac063f8a33b1de98dffc550caf&hash=7f2feb587bc9e1e5353669b50619baaf&limit=100";
     public static ArrayList<ComicCharacter> comicCharacters;
     public void showProgressDialog() {
         if (mProgressDialog == null) {

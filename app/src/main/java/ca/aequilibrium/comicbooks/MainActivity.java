@@ -4,10 +4,11 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,25 +20,35 @@ import java.util.ArrayList;
 
 import ca.aequilibrium.comicbooks.fragments.GridFragment;
 import ca.aequilibrium.comicbooks.fragments.LinearFragment;
+import ca.aequilibrium.comicbooks.model.ComicCharacter;
+import ca.aequilibrium.comicbooks.server.RestClient;
+import ca.aequilibrium.comicbooks.server.ImageDownload;
+import ca.aequilibrium.comicbooks.server.TaskComplete;
 
-public class MainActivity extends BaseActivity {
-
+/**
+ * Created by Azizur on 19/10/2016.
+ */
+public class MainActivity extends BaseActivity implements TaskComplete {
+    private static final String TAG = MainActivity.class.getSimpleName();
     private ListView mDrawerList;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private String[] titles;
     private int currentPosition = 0;
+    static  int index=0;
+    static int numberOfInvokingThisMethod=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//    if(BaseActivity.comicCharacters==null) {
-//        BaseActivity.comicCharacters = new ArrayList<ComicCharacter>();
-//        System.out.println(" Hello -1");
-//        new AsyncRestClient(this).execute(BaseActivity.MARVEL_URL,"GET");
-//    }
+    if(BaseActivity.comicCharacters==null) {
+        BaseActivity.comicCharacters = new ArrayList<ComicCharacter>();
+
+        new RestClient(this).execute(BaseActivity.MARVEL_URL,"GET");
+        showProgressDialog();
+    }
 
         titles = getResources().getStringArray(R.array.titles);
         mDrawerList = (ListView) findViewById(R.id.navigation_drawer);
@@ -91,20 +102,13 @@ public class MainActivity extends BaseActivity {
     public void selectItem(int position) {
         currentPosition = position;
         Fragment fragment;
-//        if(position == 1) {
-//            fragment = new LinearFragment();
-//        } else {
-//            fragment = new GridFragment();
-//        }
-
-        switch(position) {
-            case 1:
-                fragment = new LinearFragment();
-                break;
-            default:
-                fragment = new GridFragment();
+        if(position == 1) {
+            fragment = new LinearFragment();
+        } else {
+            fragment = new GridFragment();
         }
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+
+         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment, "visible_fragment");
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
@@ -161,8 +165,6 @@ public class MainActivity extends BaseActivity {
 
 
 
-
-
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -186,4 +188,33 @@ public class MainActivity extends BaseActivity {
         }
 
     }
+
+    @Override
+    public synchronized void onTaskComplete(Object data) {
+        if (data instanceof String){
+            Log.d(TAG,data.toString());
+            index=0;
+            numberOfInvokingThisMethod=0;
+        }
+
+        if (index<BaseActivity.comicCharacters.size()-1){
+            if (numberOfInvokingThisMethod>0 && data instanceof Bitmap) {
+                BaseActivity.comicCharacters.get(index).setThumbnail((Bitmap) data);
+                index++;
+            }
+
+            numberOfInvokingThisMethod++;
+            ComicCharacter comicCharacter=BaseActivity.comicCharacters.get(index);
+            ImageDownload download = new ImageDownload(this);
+            download.execute(comicCharacter.getCharacterURL().toString());
+        }
+
+
+        if (index==BaseActivity.comicCharacters.size()/2){
+            hideProgressDialog();
+        }
+
+
+    }
+
 }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import ca.aequilibrium.comicbooks.BaseActivity;
+import ca.aequilibrium.comicbooks.CharacterDetailActivity;
 import ca.aequilibrium.comicbooks.R;
 import ca.aequilibrium.comicbooks.adapter.ImageCaptionAdapter;
 
@@ -30,7 +31,9 @@ public class LinearFragment extends Fragment {
         characterRecycler.setLayoutManager(layoutManager);
         adapter.setListener(new ImageCaptionAdapter.Listener() {
             public void onClick(int position) {
-                // Call detail activity here
+                Intent intent = new Intent(getActivity(), CharacterDetailActivity.class);
+                intent.putExtra(CharacterDetailActivity.EXTRA_CHARACTER_NO, position);
+                getActivity().startActivity(intent);
             }
         });
         return characterRecycler;
