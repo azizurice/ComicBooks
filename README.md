@@ -4,7 +4,7 @@ A simple android app which consumes RESTful web services.
 
 ** ScreenShot of the Result:
 
-Click here to See [Grid View](/docs/images/grid_view.png), [List View](/docs/images/list_view.png) and [Detail view](/docs/images/detail_view.png).
+Click here to See [Grid View](/docs/images/grid_view.png), [List View](/docs/images/list_view.png),[Detail view](/docs/images/detail_view.png) and [Drawer](/docs/images/drawer.png).
 
 
 In this project, I didn't use any 3rd part library for consuming restful web service like [Retrofit](https://github.com/square/retrofit), nor did I use any build tools like Maven or Gradle here. There are many 3rd party libraries which make our life easy with little bit effort at the beginning.
