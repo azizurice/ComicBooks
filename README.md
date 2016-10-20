@@ -7,6 +7,8 @@ A simple android app which consumes RESTful web services.
 Click here to See [Grid View](/docs/images/grid_view.png), [List View](/docs/images/list_view.png),[Detail view](/docs/images/detail_view.png) and [Drawer](/docs/images/drawer.png).
 ** Grid View and List View
 <img src="https://github.com/azizurice/ComicBooks/blob/master/docs/images/grid_view.png" width="400px" height="800px />
+<img src="https://github.com/azizurice/ComicBooks/blob/master/docs/images/grid_view.png" width="400px" height="800px />
+
 <img src="https://github.com/azizurice/ComicBooks/blob/master/docs/images/list_view.png" width ="400px" height="600px />
 
 
