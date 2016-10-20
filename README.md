@@ -1,6 +1,6 @@
 # ComicBooks
 
-A simple android app which consumes a RESTful web services.
+A simple android app which consumes RESTful web services.
 
 ** ScreenShot of the Result:
 
