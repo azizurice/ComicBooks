@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ComicBooks</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="titles">
+        <item>Grid View</item>
+        <item>List View</item>
+    </string-array>
+
+    <string name="open_drawer">Open drawer</string>
+    <string name="close_drawer">Close drawer</string>
+    <string name="title_activity_character_detail">Comic Detail</string>
+</resources>
