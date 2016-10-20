@@ -1,10 +1,10 @@
 # ComicBooks
 
-A simple android app which consumes a RESTful web services.
+A simple android app which consumes RESTful web services.
 
 ** ScreenShot of the Result:
 
-Click here to See [Success Message](/docs/images/android-result.png) and [Error Message](/docs/images/android-error.png)
+Click here to See [Grid View](/docs/images/grid_view.png), [List View](/docs/images/list_view.png) and [Detail view](/docs/images/detail_view.png).
 
 
 In this project, I didn't use any 3rd part library for consuming restful web service like [Retrofit](https://github.com/square/retrofit), nor did I use any build tools like Maven or Gradle here. There are many 3rd party libraries which make our life easy with little bit effort at the beginning.
@@ -14,7 +14,7 @@ But raw solution always good for understanding.
 
 1. Clone the project:
 
-  $ git clone https://github.com/azizurice/CommicBooks.git
+  $ git clone https://github.com/azizurice/ComicBooks.git
 2. Import it into Android Studio.Gradle will automatically update the required dependencies.
 
 3. Click on 'Build' >> 'Clean Project' and then Click on 'Run' and 'Run app'.
