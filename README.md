@@ -14,6 +14,8 @@ Click here to See [Grid View](/docs/images/grid_view.png), [List View](/docs/ima
 
 
 
+
+
 In this project, I didn't use any 3rd part library for consuming restful web service like [Retrofit](https://github.com/square/retrofit), nor did I use any build tools like Maven or Gradle here. There are many 3rd party libraries which make our life easy with little bit effort at the beginning.
 But raw solution always good for understanding.
 
